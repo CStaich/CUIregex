@@ -1,0 +1,27 @@
+/**
+
+Title: Template
+Match Confidence:
+Language: Regular Expressions (regex)
+Language Version: 1
+Recommended Flags: \gm
+OK Flags: \gmxsuUJD
+Avoid Flags: \iA
+Purpose: 
+Assumptions: 
+Plain English Pattern Narrative: 
+Capturing Group(s):
+Definitions:
+Tags: 
+Comments:
+
+**/
+
+// PATTERN:
+
+// SUPPORTING PATTERNS:
+
+// POSITIVE CASES:
+
+// NEGATIVE CASES:
+

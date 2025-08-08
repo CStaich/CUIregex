@@ -1,0 +1,51 @@
+/**
+Title: CUI Basic - Low Confidence
+Match Confidence: Low
+Language: Regular Expressions (regex)
+Language Version: 1
+Recommended Flags: \gm
+OK Flags: \gmxsuUJD
+Avoid Flags: \iA
+Purpose: Match CUI Basic and CUI Specified. Note the importance of evaluating multiple possible labels, such that CUI Specified may also be considered if this pattern matches. CUI Specified requires *at least* the same protections as CUI Basic (citation needed).
+Assumptions: CUI Basic and CUI Specified documents contain the phrase 'CUI'
+Plain English Pattern Narrative: 
+    Match the word 'CUI' only when not part of another word or numeric sequence.
+	Case sensitive, and does not match 'cui'.
+	Indiscriminately matches any single instance of the word* 'CUI' without any additional qualifiers, context, or markings necessary (Low Confidence)
+Capturing Group(s): None
+Definitions:
+	Word: A string of alphanumeric characters surrounded by word boundaries (\b) (citation needed).
+Tags: CUI, CUI_Basic, Low_Confidence
+Comments:
+    Not recommended for production use!
+    I realize now why the community has taken to using the word cooey. I'm certain there have been many collective hours spent reviewing false positive matches they created through filing standards, policy, communications, and documentation.
+**/
+
+// PATTERN:
+\bCUI\b
+
+// POSITIVE CASES:
+CUI
+asdf CUI jkl;
+This document does not contain CUI.
+This portal is not permitted to be used for transferring CUI.
+No CUI allowed.
+===CUI===
+(CUI)
+***CUI***
+^CUI^
+!CUI!
+~CUI~
+CUI//SP-TEST
+
+
+// NEGATIVE CASES:
+0CUI0
+ACUI*
+-CUI0
+cui
+CUi CuI cUI
+AAACUIAAA
+Cooey cooey COOEY
+Circuit
+CIRCUIT
