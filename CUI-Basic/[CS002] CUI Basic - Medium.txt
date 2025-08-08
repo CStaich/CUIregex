@@ -1,0 +1,48 @@
+/**
+Title: CUI Basic - Medium Confidence
+Match Confidence: Medium
+Language: Regular Expressions (regex)
+Language Version: 1
+Recommended Flags: \gmi
+OK Flags: \gmxsuUJD
+Avoid Flags: \A
+Purpose: Match CUI Basic and CUI Specified. Note the importance of evaluating multiple possible labels, such that CUI Specified may also be considered if this pattern matches. CUI Specified requires *at least* the same protections as CUI Basic (citation needed).
+Assumptions: CUI Basic and CUI Specified documents contain the phrase 'Controlled Unclassified Information"
+Plain English Pattern Narrative: 
+    Match the phase 'Controlled Unclassified Information'.
+	Case insensitive with \i flag
+	Indiscriminately matches any single instance of the phrase* 'controlled unclassified information' without any additional qualifiers, context, or markings necessary (Medium Confidence)
+Capturing Group(s): None
+Definitions:
+	Phrase: A string of alphanumeric characters and/or spaces surrounded by word boundaries (\b) (citation needed).
+Tags: CUI, CUI_Basic, Medium_Confidence
+Comments:
+    Not recommended for production use!
+**/
+
+// PATTERN:
+\bcontrolled unclassified information\b
+
+// POSITIVE CASES:
+CONTROLLED UNCLASSIFIED INFORMATION
+controlled unclassified information
+CoNtRoLlEd UnClAsSiFiEd InFoRmAtIoN
+asdf controlled unclassified information jkl;
+This document does not contain controlled unclassified information (CUI)
+This portal is not permitted to be used for transferring controlled unclassified information
+No controlled unclassified information allowed.
+===controlled unclassified information===
+(controlled unclassified information)
+***controlled unclassified information***
+^controlled unclassified information^
+!controlled unclassified information!
+~controlled unclassified information~
+controlled unclassified information CUI//SP-TEST
+
+
+// NEGATIVE CASES:
+0controlled unclassified information0
+Acontrolled unclassified information*
+-controlled unclassified information0
+AAAcontrolled unclassified informationAAA
+Cooey cooey COOEY
