@@ -5,11 +5,22 @@ Match Confidence: Medium
 Language: Regular Expressions (regex)
 Language Version: 1
 Recommended Flags: \gmi
-OK Flags: \gmxsuUJD
+OK Flags: \gmixsuUJD
 Avoid Flags: \A
 Purpose: Match Export controlled CUI specified
 Assumptions: Proper markings based on NARA CUI Registry
-Plain English Pattern Narrative: 
+Plain English Pattern Narrative:
+    Capture: (
+        1. CUI
+        2. One Optional whitespace
+        3. One or two forward slashes or backslashes
+        4. One optional whitespace
+        5. Optional SP-
+        6. EXP
+        7. Optional O
+        8. Optional R
+        9. T
+    )
 Capturing Group(s): Captures the entire matched marking
 Definitions:
 Tags: CUI, CUI_Specified, Export
@@ -19,15 +30,17 @@ https://www.archives.gov/cui/registry/category-detail/export-control.html
 **/
 
 // PATTERN:
-\b(CUI\s{,1}\/{1,2}\s{,1}(?:SP-)?EXPO?R?T)
+(CUI\s{,1}\/{1,2}\s{,1}(?:SP-)?EXPO?R?T)
 
 // SUPPORTING PATTERNS:
 
 // POSITIVE CASES:
 CUI//SP-EXPT
 cui//sp-expt
+CUI\\SP-EXPT
 cUi/sP-eXPt
 CUI//EXPT
+CUI\\EXPT
 CUI//SP-EXPORT
 CUI//EXPORT
 CUI // SP-EXPORT
