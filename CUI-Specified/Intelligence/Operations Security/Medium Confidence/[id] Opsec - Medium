@@ -1,0 +1,58 @@
+/**
+
+Title: Operations Security - Medium Confidence
+Match Confidence: Medium
+Language: Regular Expressions (regex)
+Language Version: 1
+Recommended Flags: \gmi
+OK Flags: \gmixsuUJD
+Avoid Flags: \A
+Purpose: Match Operations Security CUI specified
+Assumptions: Proper markings based on NARA CUI Registry
+Plain English Pattern Narrative:
+    Capture: (
+        1. CUI
+        2. One Optional whitespace
+        3. One or two forward slashes or backslashes
+        4. One optional whitespace
+        5. Optional SP-
+        6. OPSEC
+    )
+Capturing Group(s): Captures the entire matched marking
+Definitions:
+Tags: CUI, CUI_Specified, Operations_Securty, Intelligence
+Comments:
+https://www.archives.gov/cui/registry/category-detail/opsec
+
+**/
+
+// PATTERN:
+(CUI\s?[\/\\]{1,2}\s?(?:SP-)?OPSEC)
+
+// SUPPORTING PATTERNS:
+
+// POSITIVE CASES:
+CUI//SP-OPSEC
+cui//sp-OPSEC
+CUI\\SP-OPSEC
+cUi/sP-OPSEC
+CUI//OPSEC
+CUI\\OPSEC
+CUI//SP-OPSEC
+CUI//OPSEC
+CUI // SP-OPSEC
+CUI //SP-OPSEC
+CUI// SP-OPSEC
+CUI/SP-OPSEC
+CUI/SP-OPSEC
+CUI/OPSEC
+CUI/OPSEC
+CUI//SP-OPSEC
+CUI//SP-OPSEC
+
+// NEGATIVE CASES:
+OPSEC
+opsec
+cui-opsec
+operations security
+CUI Operations Security
