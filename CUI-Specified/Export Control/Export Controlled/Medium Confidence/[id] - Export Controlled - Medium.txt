@@ -1,0 +1,51 @@
+/**
+
+Title: Export Controlled - Medium Confidence
+Match Confidence: Medium
+Language: Regular Expressions (regex)
+Language Version: 1
+Recommended Flags: \gmi
+OK Flags: \gmxsuUJD
+Avoid Flags: \A
+Purpose: Match Export controlled CUI specified
+Assumptions: Proper markings based on NARA CUI Registry
+Plain English Pattern Narrative: 
+Capturing Group(s): Captures the entire matched marking
+Definitions:
+Tags: CUI, CUI_Specified, Export
+Comments:
+https://www.archives.gov/cui/registry/category-detail/export-control.html
+
+**/
+
+// PATTERN:
+\b(CUI\s{,1}\/{1,2}\s{,1}(?:SP-)?EXPO?R?T)
+
+// SUPPORTING PATTERNS:
+
+// POSITIVE CASES:
+CUI//SP-EXPT
+cui//sp-expt
+cUi/sP-eXPt
+CUI//EXPT
+CUI//SP-EXPORT
+CUI//EXPORT
+CUI // SP-EXPORT
+CUI //SP-EXPT
+CUI// SP-EXPT
+CUI/SP-EXPORT
+CUI/SP-EXPT
+CUI/EXPORT
+CUI/EXPT
+CUI//SP-EXPOT
+CUI//SP-EXPRT
+
+// NEGATIVE CASES:
+Export Controlled
+ITAR
+EAR
+CUI
+CUI//SP-
+CUI//SP-XPORT
+CUI//SP-PORT
+This document is export controlled
