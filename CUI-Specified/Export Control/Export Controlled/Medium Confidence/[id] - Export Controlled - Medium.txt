@@ -30,7 +30,7 @@ https://www.archives.gov/cui/registry/category-detail/export-control.html
 **/
 
 // PATTERN:
-(CUI\s{,1}\/{1,2}\s{,1}(?:SP-)?EXPO?R?T)
+(CUI\s?[\/\\]{1,2}\s?(?:SP-)?EXPO?R?T)
 
 // SUPPORTING PATTERNS:
 
