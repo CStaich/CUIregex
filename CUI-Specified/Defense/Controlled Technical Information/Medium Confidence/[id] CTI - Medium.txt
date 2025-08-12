@@ -24,7 +24,7 @@ Tags: CUI, CUI_Specified, CTI
 Comments:
 Benchmark for this is 21 matches, 816 steps, 245microseconds. Not the greatest for efficiency. This pattern may be overcomplicated for general purpose scanning
 Not recommended for Production use
-https://www.archives.gov/cui/registry/category-detail/CTI-security
+https://www.archives.gov/cui/registry/category-detail/controlled-technical-info.html
 
 **/
 
