@@ -1,0 +1,71 @@
+/**
+
+Title: PHysical Security - Medium Confidence
+Match Confidence: Medium
+Language: Regular Expressions (regex)
+Language Version: 1
+Recommended Flags: \gmi
+OK Flags: \gmixsuUJD
+Avoid Flags: \A
+Purpose: Match PHYS controlled CUI specified
+Assumptions: Close enough to proper markings based on NARA CUI Registry
+Plain English Pattern Narrative:
+        1. CUI
+        2a. (One whitespace) OR:
+        2b1. One optional whitespace
+        2b2. One or two forward slashes or backslashes
+        2b3. One optional whitespace
+        3. Optional SP-
+        4. PHYS
+        5. Optional noncapturing ICAL
+        6. Noncapturing Word Boundary
+    )
+Capturing Group(s): Captures the entire matched marking
+Definitions:
+Tags: CUI, CUI_Specified, PHYS
+Comments:
+Benchmark for this is 21 matches, 816 steps, 245microseconds. Not the greatest for efficiency. This pattern may be overcomplicated for general purpose scanning
+Not recommended for Production use
+https://www.archives.gov/cui/registry/category-detail/PHYS-control.html
+
+**/
+
+// PATTERN:
+(CUI(?:\s|(?:\s?[\/\\]{1,2}\s?))(?:SP-)?PHYS)(?:ICAL)?\b
+
+// SUPPORTING PATTERNS:
+None
+
+// POSITIVE CASES:
+CUI//SP-PHYS
+cui//sp-PHYS
+CUI\\SP-PHYS
+cUi/sP-PHYS
+CUI//PHYS
+CUI\\PHYS
+CUI//SP-PHYS
+CUI//PHYS
+CUI // SP-PHYS
+CUI //SP-PHYS
+CUI// SP-PHYS
+CUI/SP-PHYS
+CUI/SP-PHYS
+CUI/PHYS
+CUI/PHYS
+CUI//SP-phys
+CUI//SP-physical
+CUI//SP-physical-facilitah
+CUI PHYSICAL
+CUI PHYS
+Let's get physical, cui physical
+
+// NEGATIVE CASES:
+cuiphys
+CUIPHYS
+CUIPHYSICAL
+CUI
+CUI//SP-
+CUI//SP-TEST
+CUI//TEST
+I wanna get physical
+Let's get into physical
