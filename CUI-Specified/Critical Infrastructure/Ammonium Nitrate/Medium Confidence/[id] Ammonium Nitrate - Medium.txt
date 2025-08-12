@@ -1,0 +1,68 @@
+/**
+
+Title: Ammonium Nitrate - Medium Confidence
+Match Confidence: Medium
+Language: Regular Expressions (regex)
+Language Version: 1
+Recommended Flags: \gmi
+OK Flags: \gmxsuUJD
+Avoid Flags: \A
+Purpose: Match Ammonium Nitrate (Critical Infrastructure) CUI Specified
+Assumptions: Close enough to proper markings based on NARA CUI Registry
+Plain English Pattern Narrative:
+        1. CUI
+        2a. (One whitespace) OR:
+        2b1. One optional whitespace
+        2b2. One or two forward slashes or backslashes
+        2b3. One optional whitespace
+        3. Optional SP-
+        4. CRITAN
+        6. Noncapturing Word Boundary
+Capturing Group(s): Captures the entire matched marking
+Definitions:
+Tags: CUI, CUI_Specified, CRITAN, Ammonium_Nitrate, Critical_Infrastructure
+Comments:
+Not recommended for Production use
+https://www.archives.gov/cui/registry/category-detail/ammonium-nitrate
+**/
+
+// PATTERN:
+(CUI(?:\s|(?:\s?[\/\\]{1,2}\s?))(?:SP-)?CRITAN)\b
+
+// SUPPORTING PATTERNS:
+None
+
+// POSITIVE CASES:
+CUI//SP-CRITAN
+cui//sp-CRITAN
+CUI\\SP-CRITAN
+cUi/sP-CRITAN
+CUI//CRITAN
+CUI\\CRITAN
+CUI//SP-CRITAN
+CUI//CRITAN
+CUI // SP-CRITAN
+CUI //SP-CRITAN
+CUI// SP-CRITAN
+CUI/SP-CRITAN
+CUI/SP-CRITAN
+CUI/CRITAN
+CUI/CRITAN
+CUI//SP-CRITAN
+CUI//SP-CRITAN
+CUI//SP-CRITAN-banana
+CUI CRITAN
+CUI CRITAN
+Let's get CRITAN, cui CRITAN
+
+// NEGATIVE CASES:
+cuiCRITAN
+CUICRITAN
+CUICRITAN
+CUI
+CUI//SP-
+CUI//SP-BANANA
+CUI//TEST
+I wanna get CRITAN
+Let's get into CRITAN
+
