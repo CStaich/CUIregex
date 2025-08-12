@@ -7,7 +7,7 @@ Language Version: 1
 Recommended Flags: \gmi
 OK Flags: \gmixsuUJD
 Avoid Flags: \A
-Purpose: Match PHYS controlled CUI specified
+Purpose: Match Physical Security CUI specified
 Assumptions: Close enough to proper markings based on NARA CUI Registry
 Plain English Pattern Narrative:
         1. CUI
@@ -19,14 +19,13 @@ Plain English Pattern Narrative:
         4. PHYS
         5. Optional noncapturing ICAL
         6. Noncapturing Word Boundary
-    )
 Capturing Group(s): Captures the entire matched marking
 Definitions:
 Tags: CUI, CUI_Specified, PHYS
 Comments:
 Benchmark for this is 21 matches, 816 steps, 245microseconds. Not the greatest for efficiency. This pattern may be overcomplicated for general purpose scanning
 Not recommended for Production use
-https://www.archives.gov/cui/registry/category-detail/PHYS-control.html
+https://www.archives.gov/cui/registry/category-detail/physical-security
 
 **/
 
