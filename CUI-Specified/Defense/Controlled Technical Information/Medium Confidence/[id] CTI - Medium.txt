@@ -1,0 +1,70 @@
+/**
+
+Title: CTI - Medium Confidence
+Match Confidence: Medium
+Language: Regular Expressions (regex)
+Language Version: 1
+Recommended Flags: \gmi
+OK Flags: \gmxsuUJD
+Avoid Flags: \A
+Purpose: Match Controlled Technical Information (Defense) CUI Specified
+Assumptions: Close enough to proper markings based on NARA CUI Registry
+Plain English Pattern Narrative:
+        1. CUI
+        2a. (One whitespace) OR:
+        2b1. One optional whitespace
+        2b2. One or two forward slashes or backslashes
+        2b3. One optional whitespace
+        3. Optional SP-
+        4. CTI
+        6. Noncapturing Word Boundary
+Capturing Group(s): Captures the entire matched marking
+Definitions:
+Tags: CUI, CUI_Specified, CTI
+Comments:
+Benchmark for this is 21 matches, 816 steps, 245microseconds. Not the greatest for efficiency. This pattern may be overcomplicated for general purpose scanning
+Not recommended for Production use
+https://www.archives.gov/cui/registry/category-detail/controlled-technical-info.html
+
+**/
+
+// PATTERN:
+(CUI(?:\s|(?:\s?[\/\\]{1,2}\s?))(?:SP-)?CTI)\b
+
+// SUPPORTING PATTERNS:
+None
+
+// POSITIVE CASES:
+CUI//SP-CTI
+cui//sp-CTI
+CUI\\SP-CTI
+cUi/sP-CTI
+CUI//CTI
+CUI\\CTI
+CUI//SP-CTI
+CUI//CTI
+CUI // SP-CTI
+CUI //SP-CTI
+CUI// SP-CTI
+CUI/SP-CTI
+CUI/SP-CTI
+CUI/CTI
+CUI/CTI
+CUI//SP-CTI
+CUI//SP-CTI
+CUI//SP-CTI-banana
+CUI CTI
+CUI CTI
+Let's get CTI, cui CTI
+
+// NEGATIVE CASES:
+cuiCTI
+CUICTI
+CUICTI
+CUI
+CUI//SP-
+CUI//SP-BANANA
+CUI//TEST
+I wanna get CTI
+Let's get into CTI
+
