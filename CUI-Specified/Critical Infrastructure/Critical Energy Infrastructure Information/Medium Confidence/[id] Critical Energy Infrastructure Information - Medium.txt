@@ -1,0 +1,68 @@
+/**
+
+Title: Critical Energy Infrastructure Information - Medium Confidence
+Match Confidence: Medium
+Language: Regular Expressions (regex)
+Language Version: 1
+Recommended Flags: \gmi
+OK Flags: \gmxsuUJD
+Avoid Flags: \A
+Purpose: Match Critical Energy Infrastructure Information (Critical Infrastructure) CUI Specified
+Assumptions: Close enough to proper markings based on NARA CUI Registry
+Plain English Pattern Narrative:
+        1. CUI
+        2a. (One whitespace) OR:
+        2b1. One optional whitespace
+        2b2. One or two forward slashes or backslashes
+        2b3. One optional whitespace
+        3. Optional SP-
+        4. CEII
+        6. Noncapturing Word Boundary
+Capturing Group(s): Captures the entire matched marking
+Definitions:
+Tags: CUI, CUI_Specified, CEII, critical_energy_infrastructure_information, Critical_Infrastructure
+Comments:
+Not recommended for Production use
+https://www.archives.gov/cui/registry/category-detail/critical-energy-infrastructure-information
+**/
+
+// PATTERN:
+(CUI(?:\s|(?:\s?[\/\\]{1,2}\s?))(?:SP-)?CEII)\b
+
+// SUPPORTING PATTERNS:
+None
+
+// POSITIVE CASES:
+CUI//SP-CEII
+cui//sp-CEII
+CUI\\SP-CEII
+cUi/sP-CEII
+CUI//CEII
+CUI\\CEII
+CUI//SP-CEII
+CUI//CEII
+CUI // SP-CEII
+CUI //SP-CEII
+CUI// SP-CEII
+CUI/SP-CEII
+CUI/SP-CEII
+CUI/CEII
+CUI/CEII
+CUI//SP-CEII
+CUI//SP-CEII
+CUI//SP-CEII-banana
+CUI CEII
+CUI CEII
+Let's get CEII, cui CEII
+
+// NEGATIVE CASES:
+cuiCEII
+CUICEII
+CUICEII
+CUI
+CUI//SP-
+CUI//SP-BANANA
+CUI//TEST
+I wanna get CEII
+Let's get into CEII
+
